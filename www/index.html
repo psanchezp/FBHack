@@ -59,13 +59,13 @@
         </style>
     </head>
     <body>
-        <div class="app">
+        <!--<div class="app">
             <h1>PhoneGap</h1>
             <div id="deviceready" class="blink">
                 <p class="event listening">Connecting to Device</p>
                 <p class="event received">Device is Ready</p>
             </div>
-        </div>
+        </div> -->
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
         <script type="text/javascript">
@@ -78,8 +78,9 @@
             client_id: "67df025394fb58a59495a2b8f8573ddd"
             });
         </script>
-
-        <div class="side-menu">
+        <div id='player'>
+        </div>
+        <!--<div class="side-menu">
             <button class="Home">
                 Home
             </button>
@@ -96,7 +97,7 @@
                 Browse
             </button>
             <br>
-        </div>
+        </div>-->
     
     </body>
     <script type="text/javascript">
@@ -107,6 +108,12 @@
                     sound.play()
                 })
             })
-        })
+        });
+
+        $(document).ready(function() {
+            SC.get('/tracks/293', function(track){
+                SC.oEmbed(track.permalink_url,document.getElementById('player'))
+            });
+        });
     </script>
 </html>
